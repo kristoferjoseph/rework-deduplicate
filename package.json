@@ -1,0 +1,29 @@
+{
+  "name": "rework-deduplicate",
+  "version": "0.0.0",
+  "description": "Rework plugin to remove duplicate rules",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kristoferjoseph/rework-deduplicate.git"
+  },
+  "keywords": [
+    "css",
+    "rework",
+    "deduplicate"
+  ],
+  "author": "@dam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kristoferjoseph/rework-deduplicate/issues"
+  },
+  "homepage": "https://github.com/kristoferjoseph/rework-deduplicate",
+  "devDependencies": {},
+  "dependencies": {}
+}
