@@ -1,6 +1,6 @@
 {
   "name": "rework-deduplicate",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Rework plugin to remove duplicate rules",
   "main": "index.js",
   "directories": {
