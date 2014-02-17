@@ -1,34 +1,28 @@
 var eql = require('deep-equal');
 
 module.exports = function(str) {
-    var deduplicated = [],
-        valid;
 
-    function isDuplicate(rule) {
-        if (!deduplicated.length) {
-            console.log("FIRST\n======");
-            deduplicated.push(rule);
-            return true;
-        }
-        deduplicated.forEach(function(dupe) {
-            if (eql(dupe, rule)) {
-                valid = false;
-            } else {
-                valid = true;
+    function uniques(arr) {
+        var deduplicated = [],
+            len = arr.length,
+            dupe, i, j;
+
+        for (i = 0; i < len; i++) {
+            dupe = undefined;
+            for (j = 0; j < deduplicated.length; j++) {
+                if (eql(deduplicated[j], arr[i])) {
+                    dupe = true;
+                    break;
+                }
             }
-        });
-
-        console.log(
-            '\nRULE\n',
-            rule,
-            '\n' + valid + '\n');
-
-        if (valid) { deduplicated.push(rule); }
-
-        return valid;
+            if (!dupe) {
+                deduplicated.push(arr[i]);
+            }
+        }
+        return deduplicated;
     }
 
     return function(style) {
-        style.rules = style.rules.filter(isDuplicate);
+        style.rules = uniques(style.rules);
     };
 };
