@@ -25,5 +25,8 @@
   },
   "homepage": "https://github.com/kristoferjoseph/rework-deduplicate",
   "devDependencies": {},
-  "dependencies": {}
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "deep-equal": "~0.2.1"
+  }
 }

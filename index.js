@@ -1,21 +1,34 @@
+var eql = require('deep-equal');
+
 module.exports = function(str) {
-    var duplicates = {},
-        dupe;
-    return function(style) {
-        style.rules = style.rules.filter(function(rule) {
-            if (!rule.selectors) {
-                return rule;
+    var deduplicated = [],
+        valid;
+
+    function isDuplicate(rule) {
+        if (!deduplicated.length) {
+            console.log("FIRST\n======");
+            deduplicated.push(rule);
+            return true;
+        }
+        deduplicated.forEach(function(dupe) {
+            if (eql(dupe, rule)) {
+                valid = false;
+            } else {
+                valid = true;
             }
-            rule.selectors = rule.selectors.map(function(selector) {
-                if (duplicates[selector]) {
-                    dupe = false;
-                } else {
-                    duplicates[selector] = selector;
-                    dupe = true;
-                }
-                return selector;
-            });
-            return dupe;
         });
+
+        console.log(
+            '\nRULE\n',
+            rule,
+            '\n' + valid + '\n');
+
+        if (valid) { deduplicated.push(rule); }
+
+        return valid;
+    }
+
+    return function(style) {
+        style.rules = style.rules.filter(isDuplicate);
     };
 };
