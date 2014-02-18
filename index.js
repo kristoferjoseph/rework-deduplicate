@@ -1,21 +1,21 @@
-var eql = require('deep-equal');
+var equal = require('deep-equal');
 
 module.exports = function(str) {
 
     function uniques(arr) {
         var deduplicated = [],
             len = arr.length,
-            dupe, i, j;
+            duplicate, i, j;
 
         for (i = 0; i < len; i++) {
-            dupe = undefined;
+            duplicate = undefined;
             for (j = 0; j < deduplicated.length; j++) {
-                if (eql(deduplicated[j], arr[i])) {
-                    dupe = true;
+                if (equal(deduplicated[j], arr[i])) {
+                    duplicate = true;
                     break;
                 }
             }
-            if (!dupe) {
+            if (!duplicate) {
                 deduplicated.push(arr[i]);
             }
         }
